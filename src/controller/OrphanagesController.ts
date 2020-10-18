@@ -85,7 +85,7 @@ export default {
     async delete(request: Request, response : Response){
         const orphanagesRepository = getRepository(Orphanage);
         const OrphanageFinded =  await orphanagesRepository.findOneOrFail(request.params.id,{ relations: ['images'] })
-        const OrphanageDelete = await orphanagesRepository.delete(OrphanageFinded)
+        const OrphanageDelete = await orphanagesRepository.remove(OrphanageFinded)
 
         return response.send();
     }
